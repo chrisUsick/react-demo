@@ -1,6 +1,14 @@
 # React Demo
 
 This is demo of how things are done in react. 
+It looks to demonstrate the following tasks/functions of a Frontend Framework:
+
+- Installation and local development 
+- Components/Structure 
+- Local State 
+- Global State 
+- Interactions (HTTP requests)
+- Unit testing
 
 ## Setup 
 
@@ -185,3 +193,9 @@ export default NameTag
 ```
 
 # Unit testing 
+
+TBD 
+
+# HTTP Calls and APIs 
+
+TBD 
