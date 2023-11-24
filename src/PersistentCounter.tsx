@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 
-function usePersistentState(key: string, defaultValue: number) {
-  const [state, setState] = useState(() => {
+export type UsePersistentCounterValue = {
+  count: number,
+  setCount: (count: number) => void
+}
+export function usePersistentCounter(key: string, defaultValue: number): UsePersistentCounterValue {
+  const [count, setCount] = useState<number>(() => {
     const persistedState = localStorage.getItem(key);
     return persistedState ? JSON.parse(persistedState) : defaultValue;
   });
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(state));
-  }, [key, state]);
-  return [state, setState];
+    localStorage.setItem(key, JSON.stringify(count));
+  }, [key, count]);
+  return {count, setCount};
 
 }
 
 function PersistentCounter() {
-  const [count, setCount] = usePersistentState("count", 0);
+  const { count, setCount } = usePersistentCounter("count", 0);
   return (
     <div>
       <p>You clicked {count} times</p>

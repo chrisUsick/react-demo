@@ -194,8 +194,41 @@ export default NameTag
 
 # Unit testing 
 
-TBD 
+TL;DR:
+- Install packages 
+- add tests/setup.js 
+- update vite.config.ts 
+- update package.json 
+- write unit test like `PersistentCounter.test.tsx`
+
+```
+npm install -D vitest
+npm install -D @testing-library/react @testing-library/jest-dom jsdom
+```
+
+package.json 
+```
+...
+    "test": "vitest"
+...
+```
+
+add vitest to vite.config.ts
+```
+/// <reference types="vitest" />
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './tests/setup.js',
+  },
+});
+```
+
 
 # HTTP Calls and APIs 
-
-TBD 
